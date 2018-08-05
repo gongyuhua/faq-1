@@ -18,4 +18,10 @@ class Answer extends Model
     {
         return $this->belongsTo('App\Question');
     }
+
+        public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable')->whereNull('parent_id');
+    }
+
 }
